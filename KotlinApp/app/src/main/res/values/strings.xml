@@ -5,4 +5,5 @@
     <string name="username">Username</string>
     <string name="airport_assistant_login">Airport Assistant Login</string>
     <string name="search">Search</string>
+    <string name="find_the_city_on_the_map">Find the city on the map</string>
 </resources>

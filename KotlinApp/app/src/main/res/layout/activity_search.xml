@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Search a city"
+            android:text="@string/find_the_city_on_the_map"
             android:paddingBottom="32dp"
             android:textSize="32sp"
             android:textColor="@color/white"/>
