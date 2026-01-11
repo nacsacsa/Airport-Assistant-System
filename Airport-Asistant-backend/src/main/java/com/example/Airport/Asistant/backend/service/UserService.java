@@ -6,5 +6,6 @@ import com.example.Airport.Asistant.backend.service.dto.UserDto;
 
 public interface UserService {
     UserDetailsService userDetailsService();
+    
     UserDto findByName(String name);
 }

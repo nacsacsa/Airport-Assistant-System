@@ -1,28 +1,29 @@
 package com.example.Airport.Asistant.backend.service.dto;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Objects;
 
-public class HisotryDto {
+public class HistoryDto {
 	
-	Date timestamp;
+	LocalDateTime timestamp;
     String username;
     String city;
 
-    public HisotryDto() {
+    public HistoryDto() {
     }
 
-    public HisotryDto(Date timestamp, String username, String city) {
+    public HistoryDto(LocalDateTime timestamp, String username, String city) {
         this.timestamp = timestamp;
         this.username = username;
         this.city = city;
     }
 
-    public Date getTimestamp() {
+    public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setName(Date timestamp) {
+    public void setName(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -46,7 +47,7 @@ public class HisotryDto {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        HisotryDto that = (HisotryDto) o;
+        HistoryDto that = (HistoryDto) o;
         return Objects.equals(timestamp, that.timestamp) && Objects.equals(username, that.username) && Objects.equals(city, that.city);
     }
 

@@ -1,5 +1,6 @@
 package com.example.Airport.Asistant.backend.data.entity;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Objects;
 
@@ -17,7 +18,7 @@ public class HistoryEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(name = "timestamp")
-    private Date timestamp;
+    private LocalDateTime timestamp;
     @Column(name = "username")
     private String username;
     @Column(name = "city")
@@ -26,7 +27,7 @@ public class HistoryEntity {
     public HistoryEntity() {
     }
     
-    public HistoryEntity(long id, Date timestamp, String username, String city) {
+    public HistoryEntity(long id, LocalDateTime timestamp, String username, String city) {
     	this.id = id;
     	this.timestamp = timestamp;
     	this.username = username;
@@ -41,11 +42,11 @@ public class HistoryEntity {
         this.id = id;
     }
     
-    public Date getTimestamp() {
+    public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
 
