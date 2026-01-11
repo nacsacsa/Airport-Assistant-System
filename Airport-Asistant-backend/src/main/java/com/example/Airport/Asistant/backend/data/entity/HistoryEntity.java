@@ -73,7 +73,6 @@ public class HistoryEntity {
         HistoryEntity that = (HistoryEntity) o;
         return Objects.equals(id, that.id) && Objects.equals(timestamp, that.timestamp) && Objects.equals(username, that.username) && Objects.equals(city, that.city);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(id, timestamp, username, city);

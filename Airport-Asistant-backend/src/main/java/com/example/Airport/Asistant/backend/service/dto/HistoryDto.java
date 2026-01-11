@@ -23,7 +23,7 @@ public class HistoryDto {
         return timestamp;
     }
 
-    public void setName(LocalDateTime timestamp) {
+    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
 

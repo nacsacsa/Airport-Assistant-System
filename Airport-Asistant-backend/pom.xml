@@ -11,7 +11,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>Airport-Asistant-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Airport-Asistant-backend</name>
+	<name>Airport-Assistant-backend</name>
 	<description>The backend for the Airport Assistant application</description>
 	<url/>
 	<licenses>

@@ -15,7 +15,6 @@ import com.example.Airport.Asistant.backend.service.dto.HistoryDto;
 public class HistoryController {
 	@Autowired
     HistoryService service;
-	
 	@GetMapping("/history")
     public List<HistoryDto> findAllHistory(){
         return service.findAll();

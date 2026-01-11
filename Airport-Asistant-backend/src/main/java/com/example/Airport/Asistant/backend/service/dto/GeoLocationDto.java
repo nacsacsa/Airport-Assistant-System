@@ -1,37 +1,21 @@
 package com.example.Airport.Asistant.backend.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class GeoLocationDto {
-	List<CoordinateDto> coordinates;
-	
-	public GeoLocationDto() {
+
+    private List<CoordinateDto> data = new ArrayList<>();
+
+    public List<CoordinateDto> getData() {
+        return data;
     }
 
-    public GeoLocationDto(List<CoordinateDto> coordinates) {
-        this.coordinates = coordinates;
-    }
-
-    public List<CoordinateDto> getCoordinates() {
-        return coordinates;
-    }
-
-    public void setCoordinates(List<CoordinateDto> coordinates) {
-        this.coordinates = coordinates;
-    }
-
-    
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        GeoLocationDto that = (GeoLocationDto) o;
-        return Objects.equals(coordinates, that.coordinates);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(coordinates);
+    public void setData(List<CoordinateDto> data) {
+        this.data = data;
     }
 }

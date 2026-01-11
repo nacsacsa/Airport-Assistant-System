@@ -15,13 +15,13 @@ public class SearchCityServiceImpl implements SearchCityService{
 	@Override
 	public CoordinateDto search(String city) {
 		String baseUrl = "https://geodb-free-service.wirefreethought.com/v1/geo/places?limit=1&offset=0&types=CITY&sort=-population&namePrefix=";
-	    String url = baseUrl + city;
-	    GeoLocationDto response = restTemplate.getForObject(url,  GeoLocationDto.class);
-	    if (response == null || response.getCoordinates().isEmpty()) {
-            return null;
-        }
-	    CoordinateDto cordinate = response.getCoordinates().get(0);
-		return cordinate;
+		String url = baseUrl + city;
+		GeoLocationDto response = restTemplate.getForObject(url, GeoLocationDto.class);
+		if (response == null ||
+				response.getData() == null ||
+				response.getData().isEmpty()) {
+			return null;
+		}
+        return response.getData().get(0);
 	}
-
 }

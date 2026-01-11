@@ -18,15 +18,12 @@ import com.example.Airport.Asistant.backend.service.dto.HistoryDto;
 public class SearchCityController {
 	@Autowired
     SearchCityService SearchCityService;
-	
 	@Autowired
     HistoryService historyService;
-
     @GetMapping("/cities")
     public CoordinateDto search(@RequestParam String city, Authentication authentication){
     	String name = authentication.getName();
     	LocalDateTime date = LocalDateTime.now();
-        //DateTimeFormatter dateFormated = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     	HistoryDto historyDto = new HistoryDto(date, name, city);
     	historyService.save(historyDto);
         return SearchCityService.search(city);

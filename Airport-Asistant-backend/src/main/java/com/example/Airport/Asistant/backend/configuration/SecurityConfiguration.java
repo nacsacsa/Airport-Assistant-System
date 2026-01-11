@@ -47,7 +47,7 @@ public class SecurityConfiguration {
                         return config;
                     }
                 })).csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(request -> request.requestMatchers("/api/login", "/api/register").permitAll()
+                .authorizeHttpRequests(request -> request.requestMatchers("/api/register", "/api/login", "/api/history").permitAll()
                         .requestMatchers("/h2/**").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(manager ->manager.sessionCreationPolicy(STATELESS))

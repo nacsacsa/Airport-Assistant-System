@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class AirportAsistantBackendApplication {
+public class AirportAssistantBackendApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AirportAsistantBackendApplication.class, args);
+		SpringApplication.run(AirportAssistantBackendApplication.class, args);
 	}
 	
 	@Bean

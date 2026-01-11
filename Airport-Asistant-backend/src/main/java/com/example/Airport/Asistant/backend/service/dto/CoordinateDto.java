@@ -1,25 +1,28 @@
 package com.example.Airport.Asistant.backend.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Objects;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CoordinateDto {
-	Double lattitutde;
+	Double latitude;
 	Double longitude;
 
     public CoordinateDto() {
     }
 
-    public CoordinateDto(Double lattitutde, Double longitude) {
-        this.lattitutde = lattitutde;
+    public CoordinateDto(Double latitude, Double longitude) {
+        this.latitude = latitude;
         this.longitude = longitude;
     }
 
-    public Double getLattitutde() {
-        return lattitutde;
+    public Double getLatitude() {
+        return latitude;
     }
 
-    public void seLattitutde(Double lattitutde) {
-        this.lattitutde = lattitutde;
+    public void seLatitude(Double latitude) {
+        this.latitude = latitude;
     }
 
     public Double getLongitude() {
@@ -35,11 +38,11 @@ public class CoordinateDto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CoordinateDto that = (CoordinateDto) o;
-        return Objects.equals(lattitutde, that.lattitutde) && Objects.equals(longitude, that.longitude);
+        return Objects.equals(latitude, that.latitude) && Objects.equals(longitude, that.longitude);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(lattitutde, longitude);
+        return Objects.hash(latitude, longitude);
     }
 }

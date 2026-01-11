@@ -1,6 +1,7 @@
 package com.example.Airport.Asistant.backend.data.entity;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Objects;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -14,7 +15,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "user")
+@Table(name = "searcher")
 public class UserEntity implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -64,18 +65,14 @@ public class UserEntity implements UserDetails {
         UserEntity that = (UserEntity) o;
         return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(password, that.password);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(id, name, password);
     }
-
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
+        return Collections.emptyList();
 	}
-
 	@Override
 	public String getUsername() {
 		return name;
