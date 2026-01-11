@@ -2,14 +2,14 @@ package com.example.Airport.Asistant.backend.service.dto;
 
 import java.util.Objects;
 
-public class CordinateDto {
+public class CoordinateDto {
 	Double lattitutde;
 	Double longitude;
 
-    public CordinateDto() {
+    public CoordinateDto() {
     }
 
-    public CordinateDto(Double lattitutde, Double longitude) {
+    public CoordinateDto(Double lattitutde, Double longitude) {
         this.lattitutde = lattitutde;
         this.longitude = longitude;
     }
@@ -34,7 +34,7 @@ public class CordinateDto {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CordinateDto that = (CordinateDto) o;
+        CoordinateDto that = (CoordinateDto) o;
         return Objects.equals(lattitutde, that.lattitutde) && Objects.equals(longitude, that.longitude);
     }
 
