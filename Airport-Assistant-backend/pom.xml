@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>Airport-Asistant-backend</artifactId>
+	<artifactId>Airport-Assistant-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Airport-Assistant-backend</name>
 	<description>The backend for the Airport Assistant application</description>
