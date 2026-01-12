@@ -3,6 +3,7 @@ package com.example.searchapp
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
@@ -18,35 +19,27 @@ import java.util.Locale
 class SearchActivity : AppCompatActivity() {
 
     @Serializable
-    data class GeoResponse(
-        val data: List<City>
-    )
-
-    @Serializable
-    data class City(
-        val name: String,
+    data class Coordinate(
         val latitude: Double,
         val longitude: Double
     )
 
-    lateinit var spinner : Spinner
-    lateinit var searchButton : Button
+    private lateinit var spinner : Spinner
+    private lateinit var searchButton : Button
 
-    var baseUrl = "https://geodb-free-service.wirefreethought.com/v1/geo/places?limit=1&offset=0&types=CITY&sort=-population&namePrefix="
-    val items = listOf("Budapest", "Szeged", "Debrecen", "Győr", "Miskolc")
+    private var baseUrl = "http://10.0.2.2:8080/api/cities?city="
+    private val items = listOf("Budapest", "Szeged", "Debrecen", "Győr", "Miskolc")
+    private var token = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_search)
-
+        val token = intent.getStringExtra("TOKEN")!!
+        this.token = token
         searchButton = findViewById(R.id.button_submit)
         spinner = findViewById(R.id.spinner_options)
-        val adapter = ArrayAdapter(
-            this,
-            R.layout.spinner_item,
-            items
-        )
+        val adapter = ArrayAdapter(this, R.layout.spinner_item, items)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
 
@@ -59,37 +52,33 @@ class SearchActivity : AppCompatActivity() {
         val selectedCity = spinner.selectedItem.toString()
         val url = baseUrl + selectedCity
         Thread {
-            val json = httpGet(url)
-            val response : GeoResponse = parseData(json)
-            val city = response.data.first()
-            val latitude = city.latitude
-            val longitude = city.longitude
+            val json = getCoordinatesFromApi(url, token)
+            Log.i("Json", json)
+            val response : Coordinate = parseData(json)
+            val latitude = response.latitude
+            val longitude = response.longitude
             runOnUiThread {
-                val uri = java.lang.String.format(
-                    Locale.ENGLISH,
-                    "geo:%f,%f?q=%f,%f", latitude, longitude, latitude, longitude
-                )
+                val uri = java.lang.String.format(Locale.ENGLISH, "geo:%f,%f?q=%f,%f", latitude, longitude, latitude, longitude)
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
                 startActivity(intent)
             }
         }.start()
     }
 
-    fun httpGet(urlString: String) : String {
+    private fun getCoordinatesFromApi(urlString: String, token: String) : String {
         val url = URL(urlString)
         val connection = url.openConnection() as HttpURLConnection
         connection.requestMethod = "GET"
         connection.connectTimeout = 5000
         connection.readTimeout = 5000
+        connection.setRequestProperty("Authorization", "Bearer $token")
         val response = connection.inputStream.bufferedReader().use { it.readText() }
         connection.disconnect()
         return response
     }
 
     inline fun <reified T> parseData(json: String) : T {
-        val jsonParser = Json {
-            ignoreUnknownKeys = true
-        }
+        val jsonParser = Json { ignoreUnknownKeys = true }
         val response = jsonParser.decodeFromString<T>(json)
         return response
     }
