@@ -1,0 +1,26 @@
+.history-table {
+    min-height: 100vh;
+    padding: 32px;
+    background: linear-gradient(
+      to bottom,
+      #c62828 0%,
+      #ef9a9a 30%,
+      #ffffff 100%
+    );
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  table {
+    width: 100%;
+    max-width: 900px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  th.mat-header-cell {
+    background-color: #b71c1c;
+  }
