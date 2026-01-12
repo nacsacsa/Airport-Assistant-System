@@ -17,11 +17,11 @@ public class HistoryEntity {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "timestamp")
+    @Column(name = "Search timestamp")
     private LocalDateTime timestamp;
     @Column(name = "username")
     private String username;
-    @Column(name = "city")
+    @Column(name = "Searched city")
     private String city;
     
     public HistoryEntity() {
