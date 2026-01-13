@@ -1,6 +1,8 @@
 package com.example.Airport.Asistant.backend.controller;
 
 import java.time.LocalDateTime;
+
+import com.example.Airport.Asistant.backend.service.HistoryProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,13 +21,13 @@ public class SearchCityController {
 	@Autowired
     SearchCityService SearchCityService;
 	@Autowired
-    HistoryService historyService;
+    HistoryProducer historyProducer;
     @GetMapping("/cities")
     public CoordinateDto search(@RequestParam String city, Authentication authentication){
     	String name = authentication.getName();
     	LocalDateTime date = LocalDateTime.now();
     	HistoryDto historyDto = new HistoryDto(date, name, city);
-    	historyService.save(historyDto);
+    	historyProducer.sendHistory(historyDto);
         return SearchCityService.search(city);
     }
 }
