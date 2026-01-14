@@ -23,6 +23,9 @@ export class HistoryComponent implements OnInit{
 
   loadHistory() {
     this.historyService.getHistory().subscribe(data => {
+      data.sort(
+        (a: any, b: any) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
+      );
       this.histories = data
       this.dataSource.data = data
     })
