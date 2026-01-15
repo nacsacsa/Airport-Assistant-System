@@ -13,7 +13,7 @@ This project is a mobile application, supported by a backend service, that allow
 ### **Level 3**
 - Web Admin Interface ✔️ 
 - Asynchronous Messaging ✔️
-- Docker ❌
+- Docker ❌ (Dockerfiles and docker-compose present, but not correctly implemented)
 
 ---
 
@@ -64,7 +64,7 @@ This project is a mobile application, supported by a backend service, that allow
 - **Erlang 27.3.4.6**
 - **Android Studio**
 - **Git**
-
+- **Docker** & **Docker Compose**
 ---
 
 ## Startup Instructions

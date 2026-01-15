@@ -1,0 +1,50 @@
+
+services:
+
+  db:
+    image: postgres:15
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_DB: AirportAssistantDB
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+  backend:
+    build: ./Airport-Assistant-backend
+    container_name: Airport_Assistant_backend
+    depends_on:
+      - db
+      - rabbitmq
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/AirportAssistantDB
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: admin
+      SPRING_RABBITMQ_HOST: rabbitmq
+
+  frontend:
+    build: ./Angular-Web-Admin
+    container_name: angular_web_admin
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+
+volumes:
+ db_data:
